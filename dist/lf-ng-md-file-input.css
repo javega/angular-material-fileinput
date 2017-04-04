@@ -3,13 +3,7 @@
   margin-bottom: 5px;
 }
 .lf-ng-md-file-input .lf-ng-md-file-input-preview-container {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
   -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  border: 1px solid #ddd;
   padding: 5px;
   margin-bottom: 10px;
 }
@@ -26,9 +20,6 @@
   border: 0;
 }
 .lf-ng-md-file-input .lf-ng-md-file-input-preview-container .lf-ng-md-file-input-drag {
-  -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
-  border-radius: 7px;
   border: 2px dashed #DDD;
 }
 .lf-ng-md-file-input .lf-ng-md-file-input-preview-container .lf-ng-md-file-input-drag-hover {
@@ -36,7 +27,7 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 .lf-ng-md-file-input .lf-ng-md-file-input-preview-container .lf-ng-md-file-input-drag-text-container {
-  height: 200px;
+  height: 300px;
 }
 .lf-ng-md-file-input .lf-ng-md-file-input-preview-container .lf-ng-md-file-input-drag-text-container .lf-ng-md-file-input-drag-text {
   font-size: 40px;
@@ -96,18 +87,8 @@
   font-size: 11px;
   color: #777;
 }
-.lf-ng-md-file-input .lf-ng-md-file-input-container {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-}
+
 .lf-ng-md-file-input .lf-ng-md-file-input-container .lf-ng-md-file-input-caption {
-  -moz-border-radius: 5px 0 0 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px 0 0 5px;
   position: relative;
   overflow: hidden;
   z-index: 2;
@@ -118,7 +99,6 @@
 }
 .lf-ng-md-file-input .lf-ng-md-file-input-container .lf-ng-md-file-input-caption .lf-ng-md-file-input-caption-text {
   margin-left: 8px;
-  font-weight: 700;
 }
 .lf-ng-md-file-input .lf-ng-md-file-input-container .lf-ng-md-file-input-caption .lf-ng-md-file-input-caption-text-default {
   margin-left: 8px;
@@ -142,23 +122,16 @@
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-  -moz-border-radius: none;
-  -webkit-border-radius: none;
-  border-radius: none;
+
   margin: 0px;
   padding: 0px 8px 0px 8px;
   min-height: initial;
   min-width: 100px;
 }
 .lf-ng-md-file-input .lf-ng-md-file-input-container .md-raised.lf-ng-md-file-input-button.lf-ng-md-file-input-button-brower {
-  -moz-border-radius: 0 5px 5px 0;
-  -webkit-border-radius: 0;
-  border-radius: 0 5px 5px 0;
 }
 .lf-ng-md-file-input .lf-ng-md-file-input-container .md-raised.lf-ng-md-file-input-button.lf-ng-md-file-input-button-remove {
-  -moz-border-radius: 0 0 0 0;
-  -webkit-border-radius: 0;
-  border-radius: 0 0 0 0;
+
   z-index: 2;
 }
 .lf-ng-md-file-input .lf-ng-md-file-input-container .md-raised.lf-ng-md-file-input-button .lf-ng-md-file-input-tag {
@@ -172,6 +145,10 @@
   min-height: 100%;
   background: none repeat scroll 0 0 transparent;
   cursor: inherit;
+  max-height: 38px;
+  min-width: 10px;
+  height: 38px;
+  min-height: 10px;
 }
 .lf-ng-md-file-input .lf-ng-md-file-input-container .md-raised .lf-ng-md-file-input-tag {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
@@ -196,4 +173,27 @@
 }
 .lf-ng-md-file-input .lf-unknow {
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI0IDI0IiBoZWlnaHQ9IjI0cHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGQ9Ik0yMi41LDZjLTItMi01LjItMi03LjIsMGwtOC43LDguNmMtMS4yLDEuMi0xLjIsMy4xLDAsNC4zYzEuMiwxLjIsMy4xLDEuMiw0LjMsMGw3LjItNy4yYzAuNC0wLjQsMC40LTEsMC0xLjQgIGMtMC40LTAuNC0xLTAuNC0xLjQsMGwtNy4yLDcuMmMtMC40LDAuNC0xLDAuNC0xLjQsMGMtMC40LTAuNC0wLjQtMSwwLTEuNGw4LjctOC43YzEuMi0xLjIsMy4xLTEuMiw0LjMsMGMxLjIsMS4yLDEuMiwzLjEsMCw0LjMgIGwtOC43LDguNmMtMiwyLTUuMiwyLTcuMiwwYy0yLTItMi01LjIsMC03LjJMMTYuNywxLjdjMC40LTAuNCwwLjQtMSwwLTEuNHMtMS0wLjQtMS40LDBMMy43LDExLjhjLTIuOCwyLjgtMi44LDcuMywwLDEwLjEgIGMyLjgsMi44LDcuMywyLjgsMTAuMSwwbDguNy04LjZDMjQuNCwxMS4zLDI0LjQsOCwyMi41LDZ6Ii8+PC9zdmc+);
+}
+.new-design {
+  border: 1px solid #ddd;
+  padding: 5px;
+  margin-bottom: 1px;
+}
+
+@media screen and (max-width: 600px) {
+  div.div-responsive,
+  .lf-ng-md-file-input-preview-container > div,
+  .lf-ng-md-file-input-preview-container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  .lf-ng-md-file-input-button.lf-ng-md-file-input-button-remove {
+    margin: 5px 0px 5px 0px;
+  }
+  md-card-content div.div-responsive div.lf-ng-md-file-input-container button.lf-ng-md-file-input-button.lf-ng-md-file-input-button-brower {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }
