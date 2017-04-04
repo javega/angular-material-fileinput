@@ -1,10 +1,10 @@
 {
   "name": "lf-ng-md-file-input",
-  "version": "1.5.1",
+  "version": "1.5.1.1",
   "authors": [
     "shuyu <lfshuyu@gmail.com>"
   ],
-  "description": "angular material file input with more feature.",
+  "description": "angular material file input with more feature, with some custom features",
   "keywords": [
     "angular",
     "material",
