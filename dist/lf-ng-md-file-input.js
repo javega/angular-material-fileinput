@@ -605,26 +605,6 @@
                     var files = e.files || e.target.files;
                     var reader = new FileReader();
                     var mime = files[0].type;
-
-                    /*
-                     reader.onload = function (event) {
-                     debugger;
-                     var blob = new Blob([event.target.result], {type: mime});
-                     var url = (URL || webkitURL).createObjectURL(blob);       // create o-URL of blob
-                     var video = document.createElement("video");              // create video element
-
-                     video.preload = "metadata";                               // preload setting
-                     video.onloadedmetadata  = function(aaa) {     // when enough data loads
-                     console.log(aaa);
-
-                     (URL || webkitURL).revokeObjectURL(url);                // clean up
-
-                     // ... continue from here ...
-
-                     };
-                     video.src = url;
-                     }
-                     reader.readAsArrayBuffer(files[0]);*/
                     var lfAccept = scope.accept.replace(/,/g,'|');
                     var regexp = new RegExp(lfAccept, "i");
                     var regFiles = [];
@@ -677,36 +657,53 @@
                 }
 
                 var readFile = function(file){
-                    readAsDataURL(file).then(function(result){
+                    if( parseInt(file.size / 1073741824) === 0) {
+
+                        readAsDataURL(file).then(function(result) {
+
+                            var isFileAreadyExist = false;
+
+                            scope.lfFiles.every(function(obj,idx){
+                                var lfFile = obj.lfFile;
+                                if(lfFile.name === file.name) {
+                                    if(lfFile.size === file.size) {
+                                        if(lfFile.lastModified === file.lastModified) {
+                                            isFileAreadyExist = true;
+                                        }
+                                    }
+                                    return false;
+                                }else{
+                                    return true;
+                                }
+                            });
+
+                            if(!isFileAreadyExist){
+                                var obj = genLfFileObj(file);
+                                scope.lfFiles.push(obj);
+                            }
+                            if(scope.intLoading === 0) {
+                                executeValidate();
+                            }
+                        }, function(error){
+
+                        }, function(notify){
+
+                        });
+                    } else {
 
                         var isFileAreadyExist = false;
-
-                        scope.lfFiles.every(function(obj,idx){
-                            var lfFile = obj.lfFile;
-                            if(lfFile.name === file.name) {
-                                if(lfFile.size === file.size) {
-                                    if(lfFile.lastModified === file.lastModified) {
-                                        isFileAreadyExist = true;
-                                    }
-                                }
-                                return false;
-                            }else{
-                                return true;
-                            }
-                        });
 
                         if(!isFileAreadyExist){
                             var obj = genLfFileObj(file);
                             scope.lfFiles.push(obj);
+                            scope.intLoading = false;
+                            scope.$applyAsync();
                         }
                         if(scope.intLoading === 0) {
                             executeValidate();
                         }
-                    },function(error){
 
-                    },function(notify){
-
-                    });
+                    }
                 };
 
                 var readAsDataURL = function (file,index) {
