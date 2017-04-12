@@ -1,4 +1,3 @@
-// jshint ignore: start
 (function(window,angular,undefined) {
 
     'use strict';
@@ -97,7 +96,7 @@
                     case 'audio': {
                         element.replaceWith(
                             '<audio controls>' +
-                            '<source src="' + src + '"">' +
+                            '<source src="' + src + '">' +
                             '</audio>'
                         );
                         break;
@@ -356,7 +355,9 @@
                 lfOnFileClick: '=?',
                 lfOnFileRemove: '=?',
                 accept:'@?',
-                ngDisabled:'=?'
+                ngDisabled:'=?',
+                errorMessage:'@?',
+                errorFunction:'&?'
             },
             link: function(scope,element,attrs,ctrl){
 
@@ -596,7 +597,9 @@
                         }
                     });
                     if(regFiles.length === 0) {
-                        scope.$root.showToast('Formato de archivo no soportado', true);
+                        if(angular.isFunction(scope.errorFunction) && scope.errorMessage) {
+                            scope.errorFunction()(scope.errorMessage, true)
+                        }
                     }
                     onFileChanged(regFiles);
                 });
@@ -619,7 +622,9 @@
                         }
                     });
                     if(regFiles.length === 0) {
-                        scope.$root.showToast('Formato de archivo no soportado', true);
+                        if(angular.isFunction(scope.errorFunction) && scope.errorMessage) {
+                            scope.errorFunction()(scope.errorMessage, true)
+                        }
                     }
                     onFileChanged(regFiles);
                 });
