@@ -585,7 +585,7 @@
                             scope.errorFunction()(scope.errorMessage, true);
                         }
                     }
-                    var max = scope.maxSizeVideoLimit && !isNaN(scope.maxSizeVideoLimit) ? parseInt(scope.maxSizeVideoLimit) : scope.defaultMaxSize
+                    var max = scope.maxSizeVideoLimit && !isNaN(scope.maxSizeVideoLimit) ? parseInt(scope.maxSizeVideoLimit) : scope.defaultMaxSize;
 
                     var message = scope.maxSizeVideoLimitText ? scope.maxSizeVideoLimitText : 'File size error';
 
