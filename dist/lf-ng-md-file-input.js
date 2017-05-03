@@ -357,7 +357,9 @@
                 accept:'@?',
                 ngDisabled:'=?',
                 errorMessage:'@?',
-                errorFunction:'&?'
+                errorFunction:'&?',
+                maxSizeVideoLimitText:'@?',
+                maxSizeVideoLimit:'@?'
             },
             link: function(scope,element,attrs,ctrl){
 
@@ -374,6 +376,7 @@
                 scope.isMutiple = false;
                 scope.isProgress = false;
                 scope.isCustomCaption = false;
+                scope.defaultMaxSize = 1073741824;
 
                 if(angular.isDefined(attrs.preview)){
                     scope.isPreview = true;
@@ -598,9 +601,20 @@
                     });
                     if(regFiles.length === 0) {
                         if(angular.isFunction(scope.errorFunction) && scope.errorMessage) {
-                            scope.errorFunction()(scope.errorMessage, true)
+                            scope.errorFunction()(scope.errorMessage, true);
                         }
                     }
+
+                    var max = scope.maxSizeVideoLimit | scope.defaultMaxSize;
+
+                    regFiles.forEach(function (rf) {
+                        if (rf.size > max) {
+                            regFiles = [];
+                            if(angular.isFunction(scope.errorFunction) && scope.errorMessage) {
+                                scope.errorFunction()(scope.maxSizeVideoLimitText | 'File size error', true);
+                            }
+                        }
+                    });
                     onFileChanged(regFiles);
                 });
 
@@ -626,6 +640,17 @@
                             scope.errorFunction()(scope.errorMessage, true)
                         }
                     }
+
+                    var max = scope.maxSizeVideoLimit | scope.defaultMaxSize;
+
+                    regFiles.forEach(function (rf) {
+                        if (rf.size > max) {
+                            regFiles = [];
+                            if(angular.isFunction(scope.errorFunction) && scope.errorMessage) {
+                                scope.errorFunction()(scope.maxSizeVideoLimitText | 'File size error', true);
+                            }
+                        }
+                    });
                     onFileChanged(regFiles);
                 });
 
