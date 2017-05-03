@@ -574,6 +574,31 @@
                     elDragview.removeClass("lf-ng-md-file-input-drag-hover");
                 });
 
+                var errorHandler = function (regFiles) {
+                    regFiles.forEach(function(rf) {
+                        if(rf.type.indexOf('wmv') !== -1) {
+                            regFiles = [];
+                        }
+                    });
+                    if(regFiles.length === 0) {
+                        if(angular.isFunction(scope.errorFunction) && scope.errorMessage) {
+                            scope.errorFunction()(scope.errorMessage, true);
+                        }
+                    }
+                    var max = scope.maxSizeVideoLimit && !isNaN(maxSizeVideoLimit) ? parseInt(scope.maxSizeVideoLimit) : scope.defaultMaxSize
+
+                    var message = scope.maxSizeVideoLimitText ? scope.maxSizeVideoLimitText : 'File size error';
+
+                    regFiles.forEach(function (rf) {
+                        if (rf.size > max) {
+                            regFiles = [];
+                            if(angular.isFunction(scope.errorFunction) && scope.errorMessage) {
+                                scope.errorFunction()(message, true);
+                            }
+                        }
+                    });
+                };
+
                 elDragview.bind("drop", function(e){
                     e.stopPropagation();
                     e.preventDefault();
@@ -594,27 +619,7 @@
                             regFiles.push(file);
                         }
                     });
-                    regFiles.forEach(function(rf) {
-                        if(rf.type.indexOf('wmv') !== -1) {
-                            regFiles = [];
-                        }
-                    });
-                    if(regFiles.length === 0) {
-                        if(angular.isFunction(scope.errorFunction) && scope.errorMessage) {
-                            scope.errorFunction()(scope.errorMessage, true);
-                        }
-                    }
-
-                    var max = scope.maxSizeVideoLimit | scope.defaultMaxSize;
-
-                    regFiles.forEach(function (rf) {
-                        if (rf.size > max) {
-                            regFiles = [];
-                            if(angular.isFunction(scope.errorFunction) && scope.errorMessage) {
-                                scope.errorFunction()(scope.maxSizeVideoLimitText | 'File size error', true);
-                            }
-                        }
-                    });
+                    errorHandler();
                     onFileChanged(regFiles);
                 });
 
@@ -630,27 +635,7 @@
                             regFiles.push(file);
                         }
                     });
-                    regFiles.forEach(function(rf) {
-                        if(rf.type.indexOf('wmv') !== -1) {
-                            regFiles = [];
-                        }
-                    });
-                    if(regFiles.length === 0) {
-                        if(angular.isFunction(scope.errorFunction) && scope.errorMessage) {
-                            scope.errorFunction()(scope.errorMessage, true)
-                        }
-                    }
-
-                    var max = scope.maxSizeVideoLimit | scope.defaultMaxSize;
-
-                    regFiles.forEach(function (rf) {
-                        if (rf.size > max) {
-                            regFiles = [];
-                            if(angular.isFunction(scope.errorFunction) && scope.errorMessage) {
-                                scope.errorFunction()(scope.maxSizeVideoLimitText | 'File size error', true);
-                            }
-                        }
-                    });
+                    errorHandler();
                     onFileChanged(regFiles);
                 });
 
