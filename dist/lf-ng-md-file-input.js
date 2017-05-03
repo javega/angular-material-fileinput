@@ -597,6 +597,7 @@
                             }
                         }
                     });
+                    return regFiles;
                 };
 
                 elDragview.bind("drop", function(e){
@@ -619,7 +620,7 @@
                             regFiles.push(file);
                         }
                     });
-                    errorHandler();
+                    errorHandler(regFiles);
                     onFileChanged(regFiles);
                 });
 
@@ -635,7 +636,7 @@
                             regFiles.push(file);
                         }
                     });
-                    errorHandler();
+                    regFiles = errorHandler(regFiles);
                     onFileChanged(regFiles);
                 });
 
