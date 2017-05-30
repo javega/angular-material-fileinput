@@ -579,6 +579,12 @@
                         if(rf.type.indexOf('wmv') !== -1) {
                             regFiles = [];
                         }
+                        if(rf.type.indexOf('3gp') !== -1) {
+                            regFiles = [];
+                        }
+                        if(rf.type.indexOf('mov') !== -1) {
+                            regFiles = [];
+                        }
                     });
                     if(regFiles.length === 0) {
                         if(angular.isFunction(scope.errorFunction) && scope.errorMessage) {
